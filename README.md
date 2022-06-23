@@ -2,10 +2,14 @@
 
 CoolMovies is a mobile application with list of movies and reviews.
 
+## Icon
+
+![Icon](./assets/screenshots/screenshot_1.png)
+
 ## Screenshots
 
-![Screenshot 1](./assets/screenshots/screenshot_1.jpg)
-![Screenshot 2](./assets/screenshots/screenshot_2.jpg)
+![Screenshot 1](./assets/screenshots/screenshot_1.png)
+![Screenshot 2](./assets/screenshots/screenshot_2.png)
 
 ## Installation and Run
 
