@@ -1,6 +1,8 @@
+import 'package:coolmovies/bindinds/list_movies_binding.dart';
 import 'package:coolmovies/bindinds/user_binding.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/pages/createUser/create_user_page.dart';
+import 'package:coolmovies/pages/listMovies/list_movies_page.dart';
 import 'package:coolmovies/pages/splash/splash_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +20,13 @@ class CMApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/Splash', page: () => SplashPage()),
         GetPage(
-            name: '/Auth',
+            name: '/CreateUser',
             page: () => CreateUserPage(),
             binding: UserBinding()),
+        GetPage(
+            name: '/ListMovies',
+            page: () => ListMoviesPage(),
+            binding: ListMoviesBinding()),
       ],
       debugShowCheckedModeBanner: false,
     );

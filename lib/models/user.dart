@@ -1,15 +1,15 @@
 class User {
-  int id;
+  String id;
   String name;
 
   User({
-    this.id = 0,
+    this.id = '',
     this.name = '',
   });
 
   factory User.createUser(Map<String, dynamic> map) {
     return User(
-      id: map['id'] ?? 0,
+      id: map['id'] ?? '',
       name: map['name'] ?? '',
     );
   }

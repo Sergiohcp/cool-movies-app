@@ -1,6 +1,8 @@
 import 'package:coolmovies/mappers/user_mappers.dart';
+import 'package:coolmovies/models/local_storage.dart';
 import 'package:coolmovies/models/user.dart';
 import 'package:coolmovies/repositories/user_repository.dart';
+import 'package:coolmovies/utils/user_utils.dart';
 import 'package:get/get.dart';
 
 class UserController {
@@ -20,12 +22,27 @@ class UserController {
     try {
       setUserLoading(true);
       var response = await this.userRepository.createUser(name);
-      print('response: $response');
-      final userMapped = createUserMapper(response);
-      print('userMapped: $userMapped');
+      final userMapped = createUserMapper(response.data);
       setUser(User.createUser(userMapped));
+      LocalStorage.setItem("user_id", userMapped['id']);
     } finally {
       setUserLoading(false);
     }
+  }
+
+  Future currentUser() async {
+    try {
+      setUserLoading(true);
+      var response = await this.userRepository.allUsers();
+      final userId = await LocalStorage.getItem('user_id');
+      final currentUserMapped = currentUserMapper(response.data, userId);
+      setUser(User.createUser(currentUserMapped));
+    } finally {
+      setUserLoading(false);
+    }
+  }
+
+  Future logout() async {
+    userReset();
   }
 }

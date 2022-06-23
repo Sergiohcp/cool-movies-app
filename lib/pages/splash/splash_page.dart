@@ -15,7 +15,7 @@ class _SplashPageState extends State<SplashPage> {
   void verifyUserId() async {
     final userId = await LocalStorage.getItem('user_id');
     Future.delayed(Duration(seconds: 3)).then((_) => Get.offAllNamed(
-        userId != null && !userId.isEmpty ? '/CreateUser' : '/CreateUser'));
+        userId != null && !userId.isEmpty ? '/ListMovies' : '/CreateUser'));
   }
 
   @override
@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Center(
           child: Image.asset(
             CMImages.logo,
-            scale: 2,
+            scale: 3,
           ),
         ),
       ),

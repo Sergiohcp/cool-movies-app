@@ -22,10 +22,10 @@ class RoundedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: CMColors.primary,
         onPrimary: CMColors.secondary,
-        fixedSize: Size.fromWidth(width),
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        fixedSize: Size(width, 42),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: BorderRadius.all(Radius.circular(18)),
         ),
         elevation: 2,
       ),

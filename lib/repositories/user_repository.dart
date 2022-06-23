@@ -8,17 +8,21 @@ class UserRepository {
 
   UserRepository({required this.cmApi});
 
-  Future currentUser(String name) {
-    return this
-        .cmApi
-        .client
-        .query(QueryOptions(document: UserQueries.currentUser));
-  }
-
   Future createUser(String name) {
     return this
         .cmApi
         .client
-        .mutate(MutationOptions(document: UserMutations.createUser));
+        .mutate(MutationOptions(document: UserMutations.createUser, variables: {
+          'input': {
+            'user': {'name': name}
+          },
+        }));
+  }
+
+  Future allUsers() {
+    return this
+        .cmApi
+        .client
+        .query(QueryOptions(document: UserQueries.allUsers));
   }
 }

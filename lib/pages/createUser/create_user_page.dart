@@ -1,6 +1,7 @@
 import 'package:coolmovies/controllers/user_controller.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/core/cm_images.dart';
+import 'package:coolmovies/core/cm_text_styles.dart';
 import 'package:coolmovies/validators/user_validator.dart';
 import 'package:coolmovies/widgets/custom_form_field_widget.dart';
 import 'package:coolmovies/widgets/rounded_button_widget.dart';
@@ -20,7 +21,7 @@ class _CreateUserPage extends State<CreateUserPage> {
   TextEditingController nameTextController = TextEditingController();
 
   void createUser(String name) async {
-    //await authController.login(email, password);
+    await userController.createUser(name);
   }
 
   @override
@@ -35,7 +36,7 @@ class _CreateUserPage extends State<CreateUserPage> {
               hasScrollBody: false,
               child: Padding(
                 padding:
-                    EdgeInsets.only(top: 48, left: 24, right: 24, bottom: 24),
+                    EdgeInsets.only(top: 80, left: 24, right: 24, bottom: 24),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -43,7 +44,15 @@ class _CreateUserPage extends State<CreateUserPage> {
                       children: [
                         Image.asset(
                           CMImages.logo,
-                          scale: 1.5,
+                          scale: 3,
+                        ),
+                        SizedBox(
+                          height: 24,
+                        ),
+                        Text(
+                          "Hey, nice to meet you, to start, tell us your name!",
+                          style: CMTextStyles.createUserTitle,
+                          textAlign: TextAlign.center,
                         ),
                         SizedBox(
                           height: 16,

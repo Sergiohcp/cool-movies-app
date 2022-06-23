@@ -1,11 +1,13 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class UserQueries {
-  static dynamic get currentUser => gql("""
+  static dynamic get allUsers => gql("""
     query QueryRoot {
-      currentUser {
-        id
-        name
+      allUsers {
+        nodes {
+          id
+          name
+        }
       }
     }
   """);

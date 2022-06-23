@@ -1,4 +1,5 @@
 import 'package:coolmovies/core/cm_colors.dart';
+import 'package:coolmovies/core/cm_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
@@ -25,20 +26,11 @@ class CustomFormField extends StatelessWidget {
       cursorColor: CMColors.primary,
       style: TextStyle(color: CMColors.primary),
       decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(
-          color: CMColors.grayDark,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: CMColors.gray),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: CMColors.primary, width: 1.5),
-        ),
-        suffixIcon: suffixIcon,
-      ),
+          hintText: 'John Smith',
+          hintStyle: CMTextStyles.createUserPlaceholder,
+          contentPadding: const EdgeInsets.all(18),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(18))),
       validator: validator,
-      obscureText: obscureText,
     );
   }
 }
