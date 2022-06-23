@@ -37,7 +37,7 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
       appBar: AppBar(
         title: Text(
           'Cool Movies',
-          style: CMTextStyles.listMoviesAppBar,
+          style: CMTextStyles.appBar,
           textAlign: TextAlign.start,
         ),
         backgroundColor: CMColors.primary,

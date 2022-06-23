@@ -20,7 +20,7 @@ class CMTextStyles {
     fontWeight: FontWeight.w600,
   );
 
-  static final TextStyle listMoviesAppBar = TextStyle(
+  static final TextStyle appBar = TextStyle(
     color: CMColors.white,
     fontSize: 24,
     fontWeight: FontWeight.w600,

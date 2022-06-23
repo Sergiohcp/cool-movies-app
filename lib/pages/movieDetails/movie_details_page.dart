@@ -21,6 +21,11 @@ class MovieDetails extends StatelessWidget {
       backgroundColor: CMColors.blueLight,
       appBar: AppBar(
         backgroundColor: CMColors.primary,
+        title: Text(
+          'Detail',
+          style: CMTextStyles.appBar,
+          textAlign: TextAlign.start,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
@@ -54,11 +59,23 @@ class MovieDetails extends StatelessWidget {
               height: 32,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
                   "Reviews",
                   style: CMTextStyles.movieDetailsReviews,
                 ),
+                IconButton(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onPressed: () {
+                      Get.toNamed('/CreateReview', arguments: null);
+                    },
+                    icon: Icon(
+                      Icons.add_circle_rounded,
+                      color: CMColors.white,
+                    ))
               ],
             ),
             Expanded(
