@@ -76,10 +76,15 @@ class ListReviewItem extends StatelessWidget {
                   Expanded(
                     child: Row(
                       children: [
-                        for (var i = 0; i < review.rating; i++)
+                        for (var i = 1; i <= review.rating; i++)
                           Icon(
                             Icons.star,
                             color: CMColors.yellow,
+                          ),
+                        for (var i = review.rating + 1; i <= 5; i++)
+                          Icon(
+                            Icons.star,
+                            color: CMColors.gray,
                           )
                       ],
                     ),

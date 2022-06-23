@@ -34,7 +34,7 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CMColors.secondary,
+      backgroundColor: CMColors.blueLight,
       appBar: AppBar(
         title: Text(
           'Cool Movies',
@@ -70,8 +70,9 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
                     image: moviesController.movies[index].imgUrl,
                     title: moviesController.movies[index].title,
                     onTap: () {
-                      Get.toNamed('/MovieDetails',
-                          arguments: moviesController.movies[index]);
+                      moviesController
+                          .chooseMovie(moviesController.movies[index].id);
+                      Get.toNamed('/MovieDetails');
                     },
                   ));
                 }),

@@ -44,7 +44,7 @@ class ListMovieItem extends StatelessWidget {
               ],
             ),
             Icon(Icons.arrow_forward_ios_outlined,
-                color: CMColors.gray, size: 20)
+                color: CMColors.secondary, size: 20)
           ]),
         ),
       ),

@@ -20,6 +20,7 @@ class ReviewsController {
       await this.reviewsRepository.createReview(createReview);
       final moviesController = Get.find<MoviesController>();
       await moviesController.allMovies();
+      moviesController.chooseMovie(createReview.movieId);
       Get.back();
     } finally {
       setReviewsLoading(false);
@@ -32,6 +33,7 @@ class ReviewsController {
       await this.reviewsRepository.updateReview(updateReview);
       final moviesController = Get.find<MoviesController>();
       await moviesController.allMovies();
+      moviesController.chooseMovie(updateReview.movieId);
       Get.back();
     } finally {
       setReviewsLoading(false);

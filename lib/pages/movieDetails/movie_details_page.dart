@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:coolmovies/controllers/movies_controller.dart';
 import 'package:coolmovies/controllers/user_controller.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/core/cm_text_styles.dart';
-import 'package:coolmovies/models/movie.dart';
 import 'package:coolmovies/models/review.dart';
 import 'package:coolmovies/pages/movieDetails/widgets/list_review_item_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +16,7 @@ class MovieDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userController = Get.find<UserController>();
-    final Movie movie = Get.arguments;
+    final moviesController = Get.find<MoviesController>();
 
     return Scaffold(
       backgroundColor: CMColors.blueLight,
@@ -36,7 +36,7 @@ class MovieDetailsPage extends StatelessWidget {
               child: CachedNetworkImage(
                 height: 200,
                 fit: BoxFit.fill,
-                imageUrl: movie.imgUrl,
+                imageUrl: moviesController.selectedMovie.imgUrl,
                 placeholder: (context, url) => CircularProgressIndicator(),
               ),
             ),
@@ -44,7 +44,7 @@ class MovieDetailsPage extends StatelessWidget {
               height: 16,
             ),
             Text(
-              movie.title,
+              moviesController.selectedMovie.title,
               style: CMTextStyles.movieDetailsTitle,
               textAlign: TextAlign.center,
             ),
@@ -52,7 +52,7 @@ class MovieDetailsPage extends StatelessWidget {
               height: 8,
             ),
             Text(
-              "Launched on ${DateFormat.yMMMd().format(DateTime.parse(movie.releaseDate))}",
+              "Launched on ${DateFormat.yMMMd().format(DateTime.parse(moviesController.selectedMovie.releaseDate))}",
               style: CMTextStyles.movieDetailsReleaseDate,
               textAlign: TextAlign.center,
             ),
@@ -72,7 +72,7 @@ class MovieDetailsPage extends StatelessWidget {
                     highlightColor: Colors.transparent,
                     onPressed: () {
                       Get.toNamed('/CreateOrEditReview', arguments: {
-                        'movie': movie,
+                        'movie': moviesController.selectedMovie,
                         'review': Review(
                             id: '',
                             userId: '',
@@ -89,22 +89,26 @@ class MovieDetailsPage extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: movie.reviews.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final isFromUser =
-                        movie.reviews[index].userId == userController.user.id;
-                    return ListReviewItem(
-                      review: movie.reviews[index],
-                      showEdit: isFromUser,
-                      onEdit: () {
-                        Get.toNamed('/CreateOrEditReview', arguments: {
-                          'movie': movie,
-                          'review': movie.reviews[index]
-                        });
-                      },
-                    );
-                  }),
+              child: Obx(
+                () => ListView.builder(
+                    itemCount: moviesController.selectedMovie.reviews.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final isFromUser = moviesController
+                              .selectedMovie.reviews[index].userId ==
+                          userController.user.id;
+                      return ListReviewItem(
+                        review: moviesController.selectedMovie.reviews[index],
+                        showEdit: isFromUser,
+                        onEdit: () {
+                          Get.toNamed('/CreateOrEditReview', arguments: {
+                            'movie': moviesController.selectedMovie,
+                            'review':
+                                moviesController.selectedMovie.reviews[index]
+                          });
+                        },
+                      );
+                    }),
+              ),
             )
           ],
         ),
