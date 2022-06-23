@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:coolmovies/core/cm_text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,10 @@ class ListMovieItem extends StatelessWidget {
             SizedBox(
               width: 16,
             ),
-            Text(title)
+            Text(
+              title,
+              style: CMTextStyles.listMovieItemTitle,
+            )
           ]),
         ),
       ),

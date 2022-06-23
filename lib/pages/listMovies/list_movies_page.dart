@@ -40,7 +40,7 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
           style: CMTextStyles.listMoviesAppBar,
           textAlign: TextAlign.start,
         ),
-        backgroundColor: CMColors.secondary,
+        backgroundColor: CMColors.primary,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.logout),
@@ -65,7 +65,8 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
                     image: moviesController.movies[index].imgUrl,
                     title: moviesController.movies[index].title,
                     onTap: () {
-                      print(moviesController.movies[index].title);
+                      Get.toNamed('/MovieDetails',
+                          arguments: moviesController.movies[index]);
                     },
                   ));
                 }),
