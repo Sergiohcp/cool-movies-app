@@ -6,6 +6,7 @@ import 'package:coolmovies/pages/movieDetails/widgets/list_review_item_widget.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class MovieDetails extends StatelessWidget {
   const MovieDetails({Key? key}) : super(key: key);
@@ -13,6 +14,8 @@ class MovieDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Movie movie = Get.arguments;
+
+    DateFormat dateFormat = DateFormat("yyyy/MM/dd");
 
     return Scaffold(
       backgroundColor: CMColors.blueLight,
@@ -43,7 +46,7 @@ class MovieDetails extends StatelessWidget {
               height: 8,
             ),
             Text(
-              "Launched on ${movie.releaseDate}",
+              "Launched on ${DateFormat.yMMMd().format(DateTime.parse(movie.releaseDate))}",
               style: CMTextStyles.movieDetailsReleaseDate,
               textAlign: TextAlign.center,
             ),

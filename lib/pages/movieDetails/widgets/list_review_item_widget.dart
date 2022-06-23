@@ -78,11 +78,6 @@ class ListReviewItem extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    style: TextButton.styleFrom(
-                      //padding: const EdgeInsets.all(8.0),
-                      primary: CMColors.secondary,
-                      textStyle: const TextStyle(fontSize: 20),
-                    ),
                     onPressed: () {},
                     child: Row(
                       children: [
