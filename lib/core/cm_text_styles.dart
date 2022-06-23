@@ -33,7 +33,7 @@ class CMTextStyles {
   );
 
   static final TextStyle listMovieItemTitle = TextStyle(
-    color: CMColors.secondary,
+    color: CMColors.primary,
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
