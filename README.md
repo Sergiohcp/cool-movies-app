@@ -1,26 +1,55 @@
-# Coolmovies mobile challenge
+# CoolMovies App
 
-You have to add the cool movies review feature to the existing `coolmovies-mobile`.
+CoolMovies is a mobile application with list of movies and reviews.
 
-This folder contains a basic Flutter application with some example callbacks.
+## Screenshots
 
-We've setup GraphQL for you. We recommend that you work on an emulator only, there's no need to test your application in a real device.
+![Screenshot 1](./assets/screenshots/screenshot_1.jpg)
+![Screenshot 1](./assets/screenshots/screenshot_2.jpg)
 
-## Acceptance Criteria
+## Installation and Run
 
-**You will be evaluated on your UI/UX as we believe this is an important skill to have. Please put time and effort into this.**
+Clone the repository using `master` branch.
 
-**DO NOT USE EXISTING TEMPLATES. You can copy the design but not the code, we have to evaluate you by your coding skills.**
+```bash
+git clone git@github.com:Sergiohcp/cool-movies-app.git
+```
 
-For your solution to be accepted it is required that your application is able to:
+Go to the project folder and run "pub get" to download dependencies.
 
-1. List all the available movies, showing at least the title
-2. Tapping on a movie must open a view page presenting all the available information to the user
-3. Each movie page must display all its reviews
-4. Each review should consist of (at least): title, body and stars (1-5)
-5. The user should be able to create new reviews
-6. The user should be able to edit their own reviews
+```bash
+cd coolmovies_app
+flutter pub get
+```
+Open a simulator (ios or android) and run the application.
 
-Anything else is up to you (animations, assets, 3rd party dependencies, etc). We will consider all your additions so don't stick to the minimum!
+```bash
+flutter run
+```
 
-Good luck!
+## About implementation
+
+1. In this application I used the graphql_flutter library to use the client and perform queries and mutations. I preferred use controllers to perform these request, to make a better separation of the business logic from the screens.
+
+2. The GetX library is used for managing observable states, managing controllers instances and for navigating between the screens wit named routes.
+
+3. The application uses translation (getx) and is prepared for English, Portuguese and Spanish, just change it in the nu_app.dart file, at line 34. Example: locale: Locale('pt', 'BR') / locale: Locale('es', 'MX')
+
+4. The app has unit tests, widget tests and integration tests with test, flutter_test and flutter_drive libraries.
+
+## Folders
+
+#### /lib
+
+1. **repositories:** methods to access graphql client and perform requests.
+2. **controllers:** global state and calls to repositories methods.
+3. **core:** core files like colors, texts styles, api client, etc.
+4. **graphql:** graphql queries and mutations.
+5. **models:** entities of customer, offer, product and purchase.
+6. **pages:** pages and specific widgets used in pages.
+7. **utils:** translation and money mask.
+8. **widgets:** shared widgets.
+
+#### /
+
+1**assets:** images and lottie files.

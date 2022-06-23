@@ -68,7 +68,7 @@ class _CreateOrEditReviewPageState extends State<CreateOrEditReviewPage> {
     final isNewReview = arguments['review'].title.isEmpty;
 
     return Scaffold(
-        backgroundColor: CMColors.blueLight,
+        backgroundColor: CMColors.white,
         appBar: AppBar(
           backgroundColor: CMColors.primary,
           title: Text(
@@ -95,8 +95,6 @@ class _CreateOrEditReviewPageState extends State<CreateOrEditReviewPage> {
                             controller: titleTextController,
                             validator: isEmptyTitle,
                             hintText: "Title",
-                            hintStyle: CMTextStyles.createReviewPlaceholder,
-                            style: TextStyle(color: CMColors.white),
                           ),
                           SizedBox(
                             height: 16,
@@ -105,8 +103,6 @@ class _CreateOrEditReviewPageState extends State<CreateOrEditReviewPage> {
                             controller: bodyTextController,
                             validator: isEmptyBody,
                             hintText: "Description",
-                            hintStyle: CMTextStyles.createReviewPlaceholder,
-                            style: TextStyle(color: CMColors.white),
                             maxLines: 8,
                           ),
                           SizedBox(
