@@ -25,6 +25,7 @@ class UserController {
       final userMapped = createUserMapper(response.data);
       setUser(User.createUser(userMapped));
       LocalStorage.setItem("user_id", userMapped['id']);
+      Get.offAllNamed('/ListMovie');
     } finally {
       setUserLoading(false);
     }

@@ -2,6 +2,7 @@ import 'package:coolmovies/controllers/movies_controle.dart';
 import 'package:coolmovies/controllers/user_controller.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/core/cm_text_styles.dart';
+import 'package:coolmovies/pages/listMovies/widgets/list_movie_item_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,22 +49,25 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
         ],
       ),
       body: Obx(
-        () => userController.isUserLoading
+        () => userController.isUserLoading || moviesController.isMoviesLoading
             ? Center(
                 child: CircularProgressIndicator(
                 color: CMColors.primary,
               ))
             : ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 separatorBuilder: (BuildContext context, int index) =>
                     const Divider(),
                 itemCount: moviesController.movies.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                      trailing: Text(
-                        moviesController.movies[index].title,
-                        style: TextStyle(color: Colors.green, fontSize: 15),
-                      ),
-                      title: Text("List item $index"));
+                      title: ListMovieItem(
+                    image: moviesController.movies[index].imgUrl,
+                    title: moviesController.movies[index].title,
+                    onTap: () {
+                      print(moviesController.movies[index].title);
+                    },
+                  ));
                 }),
       ),
     );
