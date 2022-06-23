@@ -1,10 +1,12 @@
 class Review {
+  String id;
   String userName;
   String title;
   String body;
   int rating;
 
   Review({
+    required this.id,
     required this.userName,
     required this.title,
     required this.body,
@@ -13,6 +15,7 @@ class Review {
 
   factory Review.createReview(Map<String, dynamic> map) {
     return Review(
+        id: map['id'],
         userName: map['userName'],
         title: map['title'],
         body: map['body'],
