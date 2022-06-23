@@ -11,7 +11,7 @@ CoolMovies is a mobile application with list of movies and reviews.
 ![screenshot_1](./assets/screenshots/screenshot_1.png)
 ![screenshot_2](./assets/screenshots/screenshot_2.png)
 
-## Installation and Run
+## Installation and Run (App and Backend)
 
 Clone the repository using `master` branch.
 
@@ -24,6 +24,13 @@ Go to the project folder and run "pub get" to download dependencies.
 ```bash
 cd coolmovies_app
 flutter pub get
+```
+
+Go to the project folder and inside of backend folder run docker-compose command.
+
+```bash
+cd backend
+docker-compose up -d
 ```
 
 Create a .env file with GRAPHQL_URL variable.
