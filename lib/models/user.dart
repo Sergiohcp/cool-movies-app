@@ -3,14 +3,14 @@ class User {
   String name;
 
   User({
-    required this.id,
-    required this.name,
+    this.id = 0,
+    this.name = '',
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory User.createUser(Map<String, dynamic> map) {
     return User(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? "",
+      id: map['id'] ?? 0,
+      name: map['name'] ?? '',
     );
   }
 }

@@ -2,12 +2,17 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 class CMApi {
-  static String get graphqlUrl => dotenv.env['GRAPHQL_URL'] as String;
+  final graphqlUrl = dotenv.env['GRAPHQL_URL'] as String;
 
-  static HttpLink httpLink = HttpLink(graphqlUrl);
+  GraphQLClient get client => graphqlClient();
 
-  static GraphQLClient get client => GraphQLClient(
-        link: httpLink,
-        cache: GraphQLCache(store: InMemoryStore()),
-      );
+  GraphQLClient graphqlClient() {
+    final HttpLink httpLink = HttpLink(graphqlUrl);
+    return GraphQLClient(
+      link: httpLink,
+      cache: GraphQLCache(store: InMemoryStore()),
+    );
+  }
 }
+
+final cmApi = CMApi();
