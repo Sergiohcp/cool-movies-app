@@ -1,4 +1,4 @@
-import 'package:coolmovies/controllers/movies_controle.dart';
+import 'package:coolmovies/controllers/movies_controller.dart';
 import 'package:coolmovies/controllers/user_controller.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/core/cm_text_styles.dart';
@@ -34,6 +34,7 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CMColors.secondary,
       appBar: AppBar(
         title: Text(
           'Cool Movies',
@@ -56,8 +57,12 @@ class _ListMoviesPageState extends State<ListMoviesPage> {
               ))
             : ListView.separated(
                 padding: const EdgeInsets.symmetric(vertical: 16),
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
+                separatorBuilder: (BuildContext context, int index) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: const Divider(
+                        color: CMColors.white,
+                      ),
+                    ),
                 itemCount: moviesController.movies.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(

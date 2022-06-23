@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 
 class ListReviewItem extends StatelessWidget {
   final Review review;
+  final bool showEdit;
 
   final double BORDER_WIDTH = 1;
   final double BORDER_RADIUS = 25;
 
-  const ListReviewItem({Key? key, required this.review}) : super(key: key);
+  const ListReviewItem({Key? key, required this.review, required this.showEdit})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,25 +79,27 @@ class ListReviewItem extends StatelessWidget {
                       ],
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        Text(
-                          'Edit',
-                          style: CMTextStyles.reviewEditButton,
-                        ),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: CMColors.secondary,
-                          size: 16,
+                  showEdit
+                      ? TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            children: [
+                              Text(
+                                'Edit',
+                                style: CMTextStyles.reviewEditButton,
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Icon(
+                                Icons.arrow_forward,
+                                color: CMColors.secondary,
+                                size: 16,
+                              )
+                            ],
+                          ),
                         )
-                      ],
-                    ),
-                  ),
+                      : Container()
                 ],
               ),
             ],

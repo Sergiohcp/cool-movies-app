@@ -1,4 +1,5 @@
 import 'package:coolmovies/bindinds/list_movies_binding.dart';
+import 'package:coolmovies/bindinds/reviews_binding.dart';
 import 'package:coolmovies/bindinds/user_binding.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/pages/createReview/create_review_page.dart';
@@ -29,8 +30,11 @@ class CMApp extends StatelessWidget {
             name: '/ListMovies',
             page: () => ListMoviesPage(),
             binding: ListMoviesBinding()),
-        GetPage(name: '/MovieDetails', page: () => MovieDetails()),
-        GetPage(name: '/CreateReview', page: () => CreateReview()),
+        GetPage(name: '/MovieDetails', page: () => MovieDetailsPage()),
+        GetPage(
+            name: '/CreateReview',
+            page: () => CreateReviewPage(),
+            binding: ReviewsBinding()),
       ],
       debugShowCheckedModeBanner: false,
     );

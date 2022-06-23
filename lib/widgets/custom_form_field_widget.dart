@@ -8,14 +8,16 @@ class CustomFormField extends StatelessWidget {
   final FormFieldValidator<String> validator;
   final bool obscureText;
   final Widget? suffixIcon;
+  final TextStyle? hintStyle;
 
   const CustomFormField(
       {Key? key,
       required this.controller,
-      required this.hintText,
+      this.hintText,
       required this.validator,
       this.obscureText = false,
-      this.suffixIcon})
+      this.suffixIcon,
+      this.hintStyle})
       : super(key: key);
 
   @override
@@ -26,8 +28,8 @@ class CustomFormField extends StatelessWidget {
       cursorColor: CMColors.primary,
       style: TextStyle(color: CMColors.primary),
       decoration: InputDecoration(
-          hintText: 'John Smith',
-          hintStyle: CMTextStyles.createUserPlaceholder,
+          hintText: hintText,
+          hintStyle: hintStyle ?? CMTextStyles.createUserPlaceholder,
           contentPadding: const EdgeInsets.all(18),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18))),
       validator: validator,

@@ -11,7 +11,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
     }}
  */
 class ReviewsMutations {
-  static dynamic get createUser => gql("""
+  static dynamic get createReview => gql("""
     mutation MutationRoot (\$input: CreateMovieReviewInput!) {
       createMovieReview(input: \$input) {
         movieReview {

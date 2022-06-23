@@ -18,6 +18,7 @@ class MoviesQueries {
                   title
                   rating
                   userByUserReviewerId {
+                    id
                     name
                   }
                 }

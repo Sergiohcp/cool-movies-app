@@ -1,21 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:coolmovies/controllers/user_controller.dart';
 import 'package:coolmovies/core/cm_colors.dart';
 import 'package:coolmovies/core/cm_text_styles.dart';
 import 'package:coolmovies/models/movie.dart';
+import 'package:coolmovies/models/review.dart';
 import 'package:coolmovies/pages/movieDetails/widgets/list_review_item_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class MovieDetails extends StatelessWidget {
-  const MovieDetails({Key? key}) : super(key: key);
+class MovieDetailsPage extends StatelessWidget {
+  const MovieDetailsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final userController = Get.find<UserController>();
     final Movie movie = Get.arguments;
-
-    DateFormat dateFormat = DateFormat("yyyy/MM/dd");
 
     return Scaffold(
       backgroundColor: CMColors.blueLight,
@@ -70,7 +71,16 @@ class MovieDetails extends StatelessWidget {
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onPressed: () {
-                      Get.toNamed('/CreateReview', arguments: null);
+                      Get.toNamed('/CreateReview', arguments: {
+                        'movie': movie,
+                        'review': Review(
+                            id: '',
+                            userId: '',
+                            userName: '',
+                            title: '',
+                            body: '',
+                            rating: 1)
+                      });
                     },
                     icon: Icon(
                       Icons.add_circle_rounded,
@@ -82,7 +92,13 @@ class MovieDetails extends StatelessWidget {
               child: ListView.builder(
                   itemCount: movie.reviews.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return ListReviewItem(review: movie.reviews[index]);
+                    final isFromUser =
+                        movie.reviews[index].userId == userController.user.id;
+                    print('isFromUser: $isFromUser');
+                    return ListReviewItem(
+                      review: movie.reviews[index],
+                      showEdit: isFromUser,
+                    );
                   }),
             )
           ],

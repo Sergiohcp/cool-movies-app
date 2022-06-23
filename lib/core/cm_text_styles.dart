@@ -14,6 +14,12 @@ class CMTextStyles {
     fontWeight: FontWeight.w400,
   );
 
+  static final TextStyle createReviewPlaceholder = TextStyle(
+    color: CMColors.white.withOpacity(0.5),
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+
   static final TextStyle roundedButtonText = TextStyle(
     color: CMColors.white,
     fontSize: 14,
@@ -27,7 +33,7 @@ class CMTextStyles {
   );
 
   static final TextStyle listMovieItemTitle = TextStyle(
-    color: CMColors.grayDarker,
+    color: CMColors.white,
     fontSize: 16,
     fontWeight: FontWeight.w600,
   );
