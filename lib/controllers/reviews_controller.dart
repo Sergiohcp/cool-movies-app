@@ -1,5 +1,6 @@
-import 'package:coolmovies/mappers/user_mappers.dart';
+import 'package:coolmovies/controllers/movies_controller.dart';
 import 'package:coolmovies/models/create_review.dart';
+import 'package:coolmovies/models/update_review.dart';
 import 'package:coolmovies/repositories/reviews_repository.dart';
 import 'package:get/get.dart';
 
@@ -13,11 +14,24 @@ class ReviewsController {
 
   void setReviewsLoading(bool value) => _isReviewsLoading.value = value;
 
-  Future createReview(CreateReview map) async {
+  Future createReview(CreateReview createReview) async {
     try {
       setReviewsLoading(true);
-      var response = await this.reviewsRepository.createReview(map);
-      final userMapped = createUserMapper(response.data);
+      await this.reviewsRepository.createReview(createReview);
+      final moviesController = Get.find<MoviesController>();
+      await moviesController.allMovies();
+      Get.back();
+    } finally {
+      setReviewsLoading(false);
+    }
+  }
+
+  Future updateReview(UpdateReview updateReview) async {
+    try {
+      setReviewsLoading(true);
+      await this.reviewsRepository.updateReview(updateReview);
+      final moviesController = Get.find<MoviesController>();
+      await moviesController.allMovies();
       Get.back();
     } finally {
       setReviewsLoading(false);

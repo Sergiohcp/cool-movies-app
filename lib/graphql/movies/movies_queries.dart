@@ -13,6 +13,7 @@ class MoviesQueries {
             movieReviewsByMovieId {
               edges {
                 node {
+                  nodeId
                   id
                   body
                   title

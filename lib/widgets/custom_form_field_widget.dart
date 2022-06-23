@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 
 class CustomFormField extends StatelessWidget {
   final TextEditingController controller;
-  final String? hintText;
   final FormFieldValidator<String> validator;
-  final bool obscureText;
-  final Widget? suffixIcon;
+  final String hintText;
   final TextStyle? hintStyle;
+  final TextStyle? style;
+  final int maxLines;
 
   const CustomFormField(
       {Key? key,
       required this.controller,
-      this.hintText,
       required this.validator,
-      this.obscureText = false,
-      this.suffixIcon,
-      this.hintStyle})
+      this.hintText = '',
+      this.hintStyle,
+      this.style,
+      this.maxLines = 1})
       : super(key: key);
 
   @override
@@ -26,13 +26,14 @@ class CustomFormField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       controller: controller,
       cursorColor: CMColors.primary,
-      style: TextStyle(color: CMColors.primary),
+      style: style ?? TextStyle(color: CMColors.primary),
       decoration: InputDecoration(
           hintText: hintText,
           hintStyle: hintStyle ?? CMTextStyles.createUserPlaceholder,
           contentPadding: const EdgeInsets.all(18),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18))),
       validator: validator,
+      maxLines: maxLines,
     );
   }
 }

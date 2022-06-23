@@ -71,7 +71,7 @@ class MovieDetailsPage extends StatelessWidget {
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onPressed: () {
-                      Get.toNamed('/CreateReview', arguments: {
+                      Get.toNamed('/CreateOrEditReview', arguments: {
                         'movie': movie,
                         'review': Review(
                             id: '',
@@ -94,10 +94,15 @@ class MovieDetailsPage extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final isFromUser =
                         movie.reviews[index].userId == userController.user.id;
-                    print('isFromUser: $isFromUser');
                     return ListReviewItem(
                       review: movie.reviews[index],
                       showEdit: isFromUser,
+                      onEdit: () {
+                        Get.toNamed('/CreateOrEditReview', arguments: {
+                          'movie': movie,
+                          'review': movie.reviews[index]
+                        });
+                      },
                     );
                   }),
             )

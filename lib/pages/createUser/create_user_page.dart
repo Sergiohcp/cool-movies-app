@@ -63,9 +63,10 @@ class _CreateUserPage extends State<CreateUserPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               CustomFormField(
-                                  controller: nameTextController,
-                                  hintText: "Name",
-                                  validator: isEmptyName),
+                                controller: nameTextController,
+                                validator: isEmptyName,
+                                hintText: "Name",
+                              ),
                               SizedBox(
                                 height: 24,
                               ),

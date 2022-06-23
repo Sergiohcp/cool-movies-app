@@ -29,4 +29,11 @@ class ReviewsMutations {
       }
     }
   """);
+
+  static dynamic get updateReview => gql("""
+    mutation MutationRoot (\$input: UpdateMovieReviewInput!) {
+      updateMovieReview(input: \$input) {
+      }
+    }
+  """);
 }

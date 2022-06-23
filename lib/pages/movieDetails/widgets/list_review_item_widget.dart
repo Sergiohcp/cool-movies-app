@@ -7,11 +7,16 @@ import 'package:flutter/material.dart';
 class ListReviewItem extends StatelessWidget {
   final Review review;
   final bool showEdit;
+  final VoidCallback onEdit;
 
   final double BORDER_WIDTH = 1;
   final double BORDER_RADIUS = 25;
 
-  const ListReviewItem({Key? key, required this.review, required this.showEdit})
+  const ListReviewItem(
+      {Key? key,
+      required this.review,
+      required this.showEdit,
+      required this.onEdit})
       : super(key: key);
 
   @override
@@ -81,7 +86,7 @@ class ListReviewItem extends StatelessWidget {
                   ),
                   showEdit
                       ? TextButton(
-                          onPressed: () {},
+                          onPressed: onEdit,
                           child: Row(
                             children: [
                               Text(

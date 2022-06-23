@@ -19,8 +19,10 @@ class MoviesController {
 
   Future allMovies() async {
     try {
+      print('PASSOU AQUI');
       setMoviesLoading(true);
       var response = await this.moviesRepository.allMovies();
+      print(response.data);
       final moviesMapped = allMoviesMapper(response.data);
       setMovies(ListMovie.createListMovie(moviesMapped));
     } finally {

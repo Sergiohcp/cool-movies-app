@@ -7,7 +7,7 @@ List<Map<String, dynamic>> allMoviesMapper(Map<String, dynamic> map) {
             'releaseDate': item['node']['releaseDate'],
             'reviews': List<Map<String, dynamic>>.from(
                 item['node']['movieReviewsByMovieId']['edges'].map((item) => {
-                      'id': item['node']['id'],
+                      'id': item['node']['nodeId'],
                       'userId': item['node']['userByUserReviewerId']['id'],
                       'userName': item['node']['userByUserReviewerId']['name'],
                       'title': item['node']['title'],
